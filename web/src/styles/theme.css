@@ -1,0 +1,65 @@
+/* Dakon — design tokens.
+   A dark stage, a teak board, ivory seeds, brass as the single accent.
+   Every text pair below was checked against WCAG AA (4.5:1 text, 3:1 controls). */
+
+:root {
+  color-scheme: dark;
+
+  /* Stage */
+  --stage: #15100c;
+  --stage-2: #1d1611;
+  --stage-3: #271e17;
+  --stage-4: #31261d;
+  --line: #3b2e24;
+  --line-strong: #7d6a56; /* control borders, 3.46:1 on stage-2 */
+
+  /* Ink */
+  --ink: #f3ebdd; /* 15.9:1 on stage */
+  --ink-2: #c7b8a3; /* 9.2:1 on stage-2 */
+  --ink-3: #a3927c; /* 5.4:1 on stage-3 */
+
+  /* Brass, the one accent */
+  --brass: #d4af5f; /* 9.1:1 on stage */
+  --brass-strong: #e2c27a;
+  --brass-dim: #8a7140;
+  --on-brass: #1c140d; /* 8.7:1 on brass */
+
+  /* Teak and seeds */
+  --teak: #7e4c2a;
+  --teak-dark: #4a2a14;
+  --seed: #efe4cc;
+
+  /* Signals, used sparingly */
+  --danger: #ee8c72;
+  --ok: #a9cf8e;
+
+  /* Type */
+  --font-display: 'Bricolage Grotesque Variable', 'Schibsted Grotesk Variable', system-ui, sans-serif;
+  --font-text: 'Schibsted Grotesk Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.125rem;
+  --step-2: 1.375rem;
+  --step-3: clamp(1.6rem, 1.2rem + 1.4vw, 2.1rem);
+  --step-4: clamp(2.1rem, 1.4rem + 3vw, 3.4rem);
+
+  /* Space */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+  --gutter: clamp(1rem, 0.6rem + 1.8vw, 2rem);
+  --page: 72rem;
+
+  /* Shape and depth */
+  --radius: 10px;
+  --radius-lg: 16px;
+  --shadow-board: 0 30px 60px -28px rgb(0 0 0 / 0.85), 0 10px 24px -12px rgb(0 0 0 / 0.6);
+  --focus: 0 0 0 3px var(--stage), 0 0 0 5px var(--brass-strong);
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}

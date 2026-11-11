@@ -1,0 +1,245 @@
+/* Dakon — the board. */
+
+.board {
+  position: relative;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.board__frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--board-ratio);
+  filter: drop-shadow(0 26px 30px rgb(0 0 0 / 0.55)) drop-shadow(0 6px 10px rgb(0 0 0 / 0.45));
+}
+
+/* Upright on narrow screens: as wide as the space allows, but never taller than the screen. */
+.board--tall .board__frame {
+  width: min(100%, 22rem, calc((100svh - var(--board-reserve)) * var(--board-ratio)));
+  min-width: 9.5rem;
+  margin-inline: auto;
+}
+
+.board__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.board__holes {
+  position: absolute;
+  inset: 0;
+}
+
+.hole-btn {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: box-shadow 160ms var(--ease), background-color 160ms var(--ease);
+}
+
+.hole-btn:disabled {
+  cursor: default;
+}
+
+.hole-btn:not(:disabled):hover {
+  background: radial-gradient(circle, rgb(226 194 122 / 0.12) 52%, transparent 54%);
+}
+
+.hole-btn:not(:disabled):active {
+  background: radial-gradient(circle, rgb(226 194 122 / 0.22) 52%, transparent 54%);
+}
+
+.hole-btn:focus-visible {
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 3px var(--brass-strong), 0 0 0 3px var(--stage);
+}
+
+/* Counts written on the wood. */
+.count {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 23px;
+  fill: var(--ink);
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-variant-numeric: tabular-nums;
+  paint-order: stroke;
+  stroke: rgb(46 25 10 / 0.6);
+  stroke-width: 3px;
+}
+
+.count--zero {
+  fill: rgb(243 235 221 / 0.55);
+}
+
+.count-plate {
+  fill: rgb(20 11 5 / 0.78);
+  stroke: var(--brass-dim);
+  stroke-width: 1.5;
+}
+
+.count--store {
+  fill: var(--brass-strong);
+  font-size: 24px;
+  stroke: none;
+}
+
+/* Marks. */
+.mark {
+  fill: none;
+  pointer-events: none;
+}
+
+.mark--playable {
+  stroke: var(--brass);
+  stroke-width: 3;
+  stroke-opacity: 0.9;
+}
+
+.mark--active {
+  stroke: #f6dc98;
+  stroke-width: 4.5;
+}
+
+.mark--path {
+  stroke: var(--brass);
+  stroke-width: 2.5;
+  stroke-dasharray: 5 6;
+  stroke-opacity: 0.85;
+}
+
+.mark--capture {
+  stroke: var(--danger);
+  stroke-width: 4;
+}
+
+.mark--last {
+  stroke: var(--brass);
+  stroke-width: 2;
+  stroke-dasharray: 2 5;
+  stroke-linecap: round;
+  stroke-opacity: 0.9;
+}
+
+.hand circle {
+  fill: var(--brass);
+  stroke: var(--on-brass);
+  stroke-width: 2;
+}
+
+.hand text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 19px;
+  fill: var(--on-brass);
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.board__flyer {
+  pointer-events: none;
+}
+
+/* ───────────────────────────── Seats around the board ───────────────────────────── */
+
+.seat {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: rgb(29 22 17 / 0.85);
+  transition: border-color 200ms var(--ease), background-color 200ms var(--ease);
+}
+
+.seat--turn {
+  border-color: var(--brass);
+  background: linear-gradient(90deg, rgb(212 175 95 / 0.12), rgb(29 22 17 / 0.85) 60%);
+}
+
+.seat__side {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--stage-3);
+  border: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--ink-2);
+}
+
+.seat--turn .seat__side {
+  background: var(--brass);
+  border-color: var(--brass);
+  color: var(--on-brass);
+}
+
+.seat__who {
+  display: grid;
+  min-width: 0;
+}
+
+.seat__name {
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.seat__note {
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
+
+.seat__note--turn {
+  color: var(--brass);
+  font-weight: 600;
+}
+
+.seat__note--late {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.seat__score {
+  display: grid;
+  justify-items: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.seat__store {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.seat__store-label {
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Playback controls under a board. */
+.sow-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2) var(--s-3);
+  min-height: 44px;
+  font-size: var(--step--1);
+  color: var(--ink-2);
+}
