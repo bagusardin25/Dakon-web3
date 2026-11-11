@@ -1,0 +1,29 @@
+{
+  "name": "dakon-contracts",
+  "version": "1.0.0",
+  "description": "Dakon smart contract: congklak refereed on BOT Chain",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:rules": "hardhat test test/Dakon.rules.test.js",
+    "test:diff": "hardhat test test/Dakon.differential.test.js",
+    "node": "hardhat node --port 8546",
+    "export-abi": "hardhat run scripts/export-abi.js",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "seed:local": "hardhat run scripts/seed.js --network localhost",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network botchainTestnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network botchain"
+  },
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.1.2",
+    "@nomicfoundation/hardhat-ethers": "^3.1.3",
+    "@nomicfoundation/hardhat-network-helpers": "^1.1.2",
+    "@nomicfoundation/hardhat-verify": "^2.1.3",
+    "chai": "^4.5.0",
+    "dotenv": "^18.0.10",
+    "ethers": "^6.17.0",
+    "hardhat": "^2.29.1"
+  }
+}
